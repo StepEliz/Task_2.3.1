@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class UsersDAOImp implements UserDao {
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public void save(User user) {
@@ -18,17 +18,17 @@ public class UsersDAOImp implements UserDao {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(long id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(long id) {
         entityManager.remove(getUserById(id));
     }
 
     @Override
-    public void update(int id, User user) {
+    public void update(long id, User user) {
         entityManager.merge(user);
     }
 

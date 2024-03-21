@@ -17,7 +17,7 @@ public class UserController {
     }
 
 
-    @GetMapping()
+    @GetMapping
     public String getString(Model model) {
         model.addAttribute("users", userService.getUsers());
         return "users/users";
@@ -29,7 +29,7 @@ public class UserController {
         return "users/new";
     }
 
-    @PostMapping()
+    @PostMapping
     public String create(@ModelAttribute("user") User user) {
         userService.save(user);
         return "redirect:/users";
